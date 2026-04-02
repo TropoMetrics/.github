@@ -17,6 +17,16 @@
 
 ---
 
+## 👔 Executive Summary
+
+This GitHub organisation documents a semester-long infrastructure project completed by a team of four IT students at De Haagse Hogeschool. Over roughly four months, the team designed and delivered a fully functional enterprise IT environment from the ground up — covering multi-site Cisco networking, virtualisation, cloud-native application deployment, VoIP telephony, monitoring, and security.
+
+The scope was deliberately broad: rather than specialising in one area, the team was required to integrate every layer of the stack — physical network design, hypervisor configuration, Kubernetes orchestration, GitOps pipelines, Active Directory, and a custom-built web application — into a single cohesive system that could be demonstrated live. Every component listed in this organisation is something the team built, configured, and validated themselves.
+
+The project demonstrates practical, hands-on competency across network engineering, DevOps, Linux systems administration, and full-stack development — skills directly applicable to roles in infrastructure, cloud, and platform engineering.
+
+---
+
 ## About This Project
 
 TropoMetrics is a fictional international weather data company, used as the case study for a semester-spanning infrastructure project at **De Haagse Hogeschool (Network Infrastructure Design)**. The assignment consisted of two equal parts:

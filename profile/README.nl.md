@@ -17,6 +17,16 @@
 
 ---
 
+## 👔 Samenvatting voor recruiters
+
+Deze GitHub-organisatie documenteert een semester-lang infrastructuurproject dat door een team van vier IT-studenten aan De Haagse Hogeschool is uitgevoerd. In circa vier maanden heeft het team een volledig functionerende enterprise IT-omgeving van de grond af opgebouwd — inclusief multi-site Cisco-netwerken, virtualisatie, cloud-native applicatie-deployment, VoIP-telefonie, monitoring en beveiliging.
+
+De scope was bewust breed: in plaats van te specialiseren in één vakgebied moest het team alle lagen van de stack integreren — fysiek netwerkontwerp, hypervisorconfiguratie, Kubernetes-orkestratie, GitOps-pipelines, Active Directory en een zelfgebouwde webapplicatie — tot één samenhangend systeem dat live kon worden gedemonstreerd. Elk onderdeel in deze organisatie is door het team zelf gebouwd, geconfigureerd en gevalideerd.
+
+Het project toont praktische, hands-on competenties op het gebied van netwerktechniek, DevOps, Linux-systeembeheer en full-stack development — vaardigheden die direct toepasbaar zijn in rollen op het gebied van infrastructuur, cloud en platform engineering.
+
+---
+
 ## Over dit project
 
 TropoMetrics is een fictief internationaal weerdata-bedrijf, ingezet als casus voor een semester-overspannend infrastructuurproject aan **De Haagse Hogeschool (Network Infrastructure Design)**. De opdracht bestond uit twee gelijkwaardige delen:
