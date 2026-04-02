@@ -67,13 +67,13 @@ Alle diensten als VM's op één fysieke Proxmox VE-host, verbonden via **één L
 - **Alertmanager** — alertroutering vanuit K3s
 
 ### 🔐 Beveiliging
-Cisco Firepower 1140 (firewall/IDS/IPS) · Active Directory + LDAP · 802.1X · SNMPv3 · SSH-only beheer · IPsec-versleuteld inter-siteverkeer
+Cisco ISR 4331 (router/ZBF) · Active Directory + LDAP · 802.1X · SNMPv3 · SSH-only beheer · IPsec-versleuteld inter-siteverkeer
 
 ---
 
 ## Technologiestack
 
-`Cisco IOS` · `Proxmox VE` · `K3s / Kubernetes` · `ArgoCD` · `GitHub Actions` · `Docker` · `MetalLB` · `Traefik` · `NPM Plus` · `PRTG` · `Prometheus` · `Grafana` · `Alertmanager` · `Windows Server AD` · `Issabel PBX` · `Grandstream ATA` · `Stalwart Mail` · `Zammad` · `React 18` · `TypeScript` · `Node.js` · `Redis` · `Tailwind CSS` · `shadcn/ui`
+`Cisco IOS` · `Proxmox VE` · `K3s / Kubernetes` · `ArgoCD` · `GitHub Actions` · `Docker` · `MetalLB` · `Traefik` · `NPM Plus` · `PRTG` · `Prometheus` · `Grafana` · `Alertmanager` · `Windows Server AD` · `Issabel PBX` · `Grandstream ATA` · `Stalwart Mail` · `Zammad` · `React 18` · `TypeScript` · `Node.js` · `Redis` · `Tailwind CSS`
 
 ---
 
