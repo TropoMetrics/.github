@@ -1,75 +1,77 @@
 <div align="center">
 
-<img src="https://img.shields.io/badge/Status-Afgerond-brightgreen?style=for-the-badge"/>
-<img src="https://img.shields.io/badge/Periode-Sept%202025%20–%20Jan%202026-blue?style=for-the-badge"/>
-<img src="https://img.shields.io/badge/Instelling-De%20Haagse%20Hogeschool-orange?style=for-the-badge"/>
-<img src="https://img.shields.io/badge/Gedemonstreerd-21%20januari%202026-purple?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Status-Completed-brightgreen?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Period-Sept%202025%20–%20Jan%202026-blue?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Institution-De%20Haagse%20Hogeschool-orange?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Demonstrated-21%20January%202026-purple?style=for-the-badge"/>
 
 # 🌦️ TropoMetrics Infrastructure Project
 
-**Een volledig semester IT-infrastructuurproject** — van entreprise netwerk tot cloud-native weerdienst, VoIP-telefonie, GitOps en professionele monitoring. Ontworpen, gebouwd, getest en gedemonstreerd als werkend productiesysteem.
+**A full-semester IT infrastructure project** — from enterprise network to cloud-native weather service, VoIP telephony, GitOps, and professional monitoring. Designed, built, tested, and demonstrated as a working production system.
 
-[📖 Volledige documentatie (NL/EN)](https://github.com/TropoMetrics/tropometrics-docs) · [🌐 Weerdienst frontend](https://github.com/TropoMetrics/look-at-this-weather) · [⚙️ API Server](https://github.com/TropoMetrics/api-server) · [🔄 GitOps / ArgoCD](https://github.com/TropoMetrics/ArgoCI-CD) · [🖧 Netwerkconfiguraties](https://github.com/TropoMetrics/Packet-Tracer-configs)
+[📖 Full documentation (EN/NL)](https://github.com/TropoMetrics/tropometrics-docs) · [🌐 Weather service frontend](https://github.com/TropoMetrics/look-at-this-weather) · [⚙️ API Server](https://github.com/TropoMetrics/api-server) · [🔄 GitOps / ArgoCD](https://github.com/TropoMetrics/ArgoCI-CD) · [🖧 Network configs](https://github.com/TropoMetrics/Packet-Tracer-configs)
+
+🇳🇱 [Lees deze pagina in het Nederlands](./README.nl.md)
 
 </div>
 
 ---
 
-## Over dit project
+## About This Project
 
-TropoMetrics is een fictief internationaal weerdata-bedrijf, ingezet als casus voor een semester-overspannend infrastructuurproject aan **De Haagse Hogeschool (Network Infrastructure Design)**. De opdracht bestond uit twee gelijkwaardige delen:
+TropoMetrics is a fictional international weather data company, used as the case study for a semester-spanning infrastructure project at **De Haagse Hogeschool (Network Infrastructure Design)**. The assignment consisted of two equal parts:
 
-1. **Enterprise IT-infrastructuur** ontwerpen en bouwen voor een bedrijf met kantoren in drie landen (Delft, Aruba en Melbourne) — van netwerktopologie en IP-plan tot Proxmox-virtualisatie en Active Directory.
-2. **Een eigen weerdienst ontwikkelen** die op die infrastructuur draait — een volledige full-stack applicatie met React-frontend, Node.js/Redis API en Kubernetes-deployment. Voor de weerdata werd [Open-Meteo](https://open-meteo.com) als upstream API gebruikt, zodat de focus kon liggen op de infrastructuur en architectuur.
+1. **Design and build an enterprise IT infrastructure** for a company with offices in three countries (Delft, Aruba, and Melbourne) — from network topology and IP plan to Proxmox virtualisation and Active Directory.
+2. **Develop a custom weather service** running on that infrastructure — a full-stack application with a React frontend, Node.js/Redis API, and Kubernetes deployment. [Open-Meteo](https://open-meteo.com) was used as the upstream weather data API, allowing the focus to remain on the infrastructure and architecture rather than data acquisition.
 
-Het project volgde de **Design Science Research (DSR)**-methodiek en werd afgesloten met een live demonstratie voor beoordelaars op 21 januari 2026.
+The project followed the **Design Science Research (DSR)** methodology and concluded with a live demonstration for assessors on 21 January 2026.
 
 ---
 
-## Wat er gebouwd is
+## What Was Built
 
-### 🌐 Enterprisenetwerk (Cisco IOS / Packet Tracer)
-Hiërarchisch drielaags netwerk over Delft, Aruba en Melbourne:
+### 🌐 Enterprise Network (Cisco IOS / Packet Tracer)
+Hierarchical three-tier network across Delft, Aruba, and Melbourne:
 - Dual-stack **IPv4 + IPv6** · **OSPF** · **BGP** (AS 2000 ↔ ISP AS 1000) · **HSRP** failover
-- **IPsec/GRE VPN**-tunnels tussen alle locaties · **EtherChannel (LACP)** uplinks
-- VLAN-segmentatie: `STAFFNET` · `CALCNET` · `INTRANET` · `DMZNET`
-- Laag-2-beveiliging: Port Security · DHCP Snooping · DAI · IP Source Guard · Blackhole VLANs
+- **IPsec/GRE VPN** tunnels between all sites · **EtherChannel (LACP)** uplinks
+- VLAN segmentation: `STAFFNET` · `CALCNET` · `INTRANET` · `DMZNET`
+- Layer 2 security: Port Security · DHCP Snooping · DAI · IP Source Guard · Blackhole VLANs
 
-### 🖥️ Serverinfrastructuur (Proxmox VE)
-Alle diensten als VM's op één fysieke Proxmox VE-host, verbonden via **één Linux-bridge (`vmbr0`) met VLAN-trunk**:
+### 🖥️ Server Infrastructure (Proxmox VE)
+All services as VMs on a single physical Proxmox VE host, connected via a **single Linux bridge (`vmbr0`) with VLAN trunk**:
 
-| VM | VLAN | IP | Rol |
-|----|------|----|-----|
-| `k3s-w1/w2/w3` | 190 | `10.10.90.11–13` | K3s Kubernetes-nodes (Alpine Linux) |
-| `ticketsystem-intranet` | 190 | `10.10.90.44` | Zammad ticketsysteem |
-| `npmplus-dmz-pub` | 191 | `145.34.44.80` | NPM Plus — publieke reverse proxy (DMZ) |
+| VM | VLAN | IP | Role |
+|----|------|----|------|
+| `k3s-w1/w2/w3` | 190 | `10.10.90.11–13` | K3s Kubernetes nodes (Alpine Linux) |
+| `ticketsystem-intranet` | 190 | `10.10.90.44` | Zammad ticketing system |
+| `npmplus-dmz-pub` | 191 | `145.34.44.80` | NPM Plus — public reverse proxy (DMZ) |
 | `grafana-intranet` | 180 | `10.10.80.21` | Grafana monitoring (standalone) |
-| `crm-intranet` | 180 | `10.10.80.90` | CRM-applicatie |
-| Windows Server | 180 | `10.10.80.11` | Active Directory DC · DHCP · PRTG |
-| Issabel PBX | 180 | INTRANET | VoIP-telefooncentrale |
-| Stalwart mail | 180 | INTRANET | Mailserver `@tropometrics.tech` |
+| `crm-intranet` | 180 | `10.10.80.90` | CRM application |
+| Windows Server | 180 | `10.10.80.11` | Active Directory DC · DHCP · print/file · PRTG |
+| Issabel PBX | 180 | INTRANET | VoIP telephone exchange |
+| Stalwart mail | 180 | INTRANET | Mail server `@tropometrics.tech` |
 
-### ☁️ Cloud-native Weerdienst (K3s / Kubernetes)
-- **`look-at-this-weather`** — React 18 + TypeScript + Vite, realtime weerdata, 7-daagse voorspelling, maritiem overzicht, dark/light mode
-- **`api-server`** — Node.js/Express caching-proxy voor Open-Meteo, Redis TTL-caching (rate limiting preventie)
-- **Horizontal Pod Autoscaler** — automatisch schalen van 2 naar 10 replicas op 50% CPU
-- **ArgoCD GitOps** — declaratief, self-healing, volledig geautomatiseerd
+### ☁️ Cloud-Native Weather Service (K3s / Kubernetes)
+- **`look-at-this-weather`** — React 18 + TypeScript + Vite, real-time weather data, 7-day forecast, maritime overview, dark/light mode
+- **`api-server`** — Node.js/Express caching proxy for Open-Meteo, Redis TTL caching (rate limiting prevention)
+- **Horizontal Pod Autoscaler** — automatically scales from 2 to 10 replicas at 50% CPU
+- **ArgoCD GitOps** — declarative, self-healing, fully automated
 
-### 📞 Telefonie (Issabel PBX / FreePBX + Asterisk)
-- IVR-menu voor inkomende gespreksroutering naar afdelingen
-- SIP-softphones · SIP-bureautelefoons · analoge telefoons via **Grandstream ATA**
+### 📞 Telephony (Issabel PBX / FreePBX + Asterisk)
+- IVR menu for routing inbound calls to departments
+- SIP softphones · SIP desk phones · analogue phones via **Grandstream ATA**
 
-### 📊 Monitoring (tweelaagsig)
-- **PRTG** (op Windows Server) — SNMPv3-monitoring van alle Cisco-apparaten, servers en servicebeschikbaarheid
-- **Prometheus + Grafana** (standalone VM) — applicatie- en clustermetrics
-- **Alertmanager** — alertroutering vanuit K3s
+### 📊 Monitoring (two-layer)
+- **PRTG** (on Windows Server) — SNMPv3 monitoring of all Cisco devices, servers, and service availability
+- **Prometheus + Grafana** (standalone VM) — application and cluster metrics
+- **Alertmanager** — alert routing from K3s
 
-### 🔐 Beveiliging
-Cisco Firepower 1140 (firewall/IDS/IPS) · Active Directory + LDAP · 802.1X · SNMPv3 · SSH-only beheer · IPsec-versleuteld inter-siteverkeer
+### 🔐 Security
+Cisco Firepower 1140 (firewall/IDS/IPS) · Active Directory + LDAP · 802.1X · SNMPv3 · SSH-only management · IPsec-encrypted inter-site traffic
 
 ---
 
-## Technologiestack
+## Technology Stack
 
 `Cisco IOS` · `Proxmox VE` · `K3s / Kubernetes` · `ArgoCD` · `GitHub Actions` · `Docker` · `MetalLB` · `Traefik` · `NPM Plus` · `PRTG` · `Prometheus` · `Grafana` · `Alertmanager` · `Windows Server AD` · `Issabel PBX` · `Grandstream ATA` · `Stalwart Mail` · `Zammad` · `React 18` · `TypeScript` · `Node.js` · `Redis` · `Tailwind CSS` · `shadcn/ui`
 
@@ -77,26 +79,26 @@ Cisco Firepower 1140 (firewall/IDS/IPS) · Active Directory + LDAP · 802.1X · 
 
 ## Repositories
 
-| Repository | Beschrijving |
+| Repository | Description |
 |------------|-------------|
-| [tropometrics-docs](https://github.com/TropoMetrics/tropometrics-docs) | Centrale documentatie — volledig in Nederlands én Engels |
-| [look-at-this-weather](https://github.com/TropoMetrics/look-at-this-weather) | React/TypeScript weerdienst frontend |
-| [api-server](https://github.com/TropoMetrics/api-server) | Node.js/Redis caching API-proxy |
-| [ArgoCI-CD](https://github.com/TropoMetrics/ArgoCI-CD) | ArgoCD GitOps-manifests en Kubernetes-configuraties |
-| [Packet-Tracer-configs](https://github.com/TropoMetrics/Packet-Tracer-configs) | Cisco IOS-configuraties en Packet Tracer-bestanden |
+| [tropometrics-docs](https://github.com/TropoMetrics/tropometrics-docs) | Central documentation — fully available in both Dutch and English |
+| [look-at-this-weather](https://github.com/TropoMetrics/look-at-this-weather) | React/TypeScript weather service frontend |
+| [api-server](https://github.com/TropoMetrics/api-server) | Node.js/Redis caching API proxy |
+| [ArgoCI-CD](https://github.com/TropoMetrics/ArgoCI-CD) | ArgoCD GitOps manifests and Kubernetes configurations |
+| [Packet-Tracer-configs](https://github.com/TropoMetrics/Packet-Tracer-configs) | Cisco IOS configurations and Packet Tracer files |
 
 ---
 
 ## Team
 
-| Naam | Rol |
-|------|-----|
-| **Kai Diemel** | Projectleider · Netwerk · Frontend · Documentatie |
-| **Max Blaauw** | 2e projectleider · Netwerktechniek · Infra · DevOps · Front- & Backend |
-| **Ole Spiegelenberg** | DevOps · Beveiliging · Onderzoek |
-| **Arne Jansonius** | Netwerk · Netwerkontwerp · Documentatie · Onderzoek |
+| Name | Role |
+|------|------|
+| **Kai Diemel** | Project Lead · Network · Frontend · Documentation |
+| **Max Blaauw** | 2nd Project Lead · Network Engineering · Infrastructure · DevOps · Front- & Backend |
+| **Ole Spiegelenberg** | DevOps · Security · Research |
+| **Arne Jansonius** | Network · Network Design · Documentation · Research |
 
 ---
 
-*De Haagse Hogeschool · Network Infrastructure Design · September 2025 – Januari 2026*
-*Dit project is uitgevoerd als Proof of Concept in een onderwijscontext. Niet alle keuzes zijn bedoeld voor directe productie-implementatie, maar zijn technisch onderbouwd en volledig reproduceerbaar.*
+*De Haagse Hogeschool · Network Infrastructure Design · September 2025 – January 2026*
+*This project was carried out as a Proof of Concept in an educational context. Not all choices are intended for direct production deployment, but are technically sound and fully reproducible.*
