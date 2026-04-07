@@ -52,7 +52,7 @@ Alle diensten als VM's op één fysieke Proxmox VE-host, verbonden via **één L
 
 | VM | VLAN | IP | Rol |
 |----|------|----|-----|
-| `k3s-w1/w2/w3` | 190 | `10.10.90.11–13` | K3s Kubernetes-nodes (Alpine Linux) |
+| `k3s-w1/w2/w3` | 190 | `10.10.90.11-13` | K3s Kubernetes-nodes (Alpine Linux) |
 | `ticketsystem-intranet` | 190 | `10.10.90.44` | Zammad ticketsysteem |
 | `npmplus-dmz-pub` | 191 | `145.34.44.80` | NPM Plus - publieke reverse proxy (DMZ) |
 | `grafana-intranet` | 180 | `10.10.80.21` | Grafana monitoring (standalone) |
@@ -110,5 +110,5 @@ Cisco ISR 4331 (router/ZBF) · Active Directory + LDAP · 802.1X · SNMPv3 · SS
 
 ---
 
-*De Haagse Hogeschool · Network Infrastructure Design · September 2025 – Januari 2026*
+*De Haagse Hogeschool · Network Infrastructure Design · September 2025 - Januari 2026*
 *Dit project is uitgevoerd als Proof of Concept in een onderwijscontext. Niet alle keuzes zijn bedoeld voor directe productie-implementatie, maar zijn technisch onderbouwd en volledig reproduceerbaar.*
